@@ -1,0 +1,29 @@
+{ pkgs, ... }:
+
+{
+  home.packages = [
+    # packages
+    pkgs.ccls
+    pkgs.gcc
+    pkgs.i3lock-color
+    pkgs.tree-sitter
+ ];
+
+  programs = {
+    alacritty = import ./alacritty.nix;
+
+    neovim = import ./neovim { inherit pkgs; };
+
+    #polybar = import ./polybar.nix;
+
+    zsh = import ./zsh.nix { inherit pkgs; };
+
+    starship = {
+      enable = true;
+
+      settings = {
+          add_newline = false;
+      };
+    };
+  };
+}
