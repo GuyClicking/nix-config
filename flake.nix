@@ -33,5 +33,16 @@
           }
         ];
       };
+      home = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        homeDirectory = "/home/benjamin";
+        username = "benjamin";
+        configuration = { pkgs, ...}: {
+          nixpkgs.overlays = overlays;
+          imports = [
+            ./home/home.nix
+          ];
+        };
+      };
   };
 }
