@@ -1,6 +1,8 @@
 {
+  description = "NixOS + home-manager configuration";
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -32,6 +34,10 @@
             home-manager.users.benjamin = import ./home/home.nix;
           }
         ];
+      };
+      apps.x86_64-linux.home = {
+        type = "app";
+        program = "${self.home.activationPackage}/activate";
       };
       home = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
