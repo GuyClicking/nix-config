@@ -5,7 +5,7 @@
 
   settings = {
     "module/bspwm" = {
-      type="internal/bspwm";
+      type = "internal/bspwm";
       # this isnt finished !
     };
   };

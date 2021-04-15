@@ -20,12 +20,6 @@
 
     zsh = import ./zsh.nix { inherit pkgs; };
 
-    starship = {
-      enable = true;
-
-      settings = {
-          add_newline = false;
-      };
-    };
+    starship = import ./starship.nix;
   };
 }

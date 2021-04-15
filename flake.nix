@@ -22,12 +22,14 @@
       overlays = [
         neovim.overlay
       ];
-    in {
+    in
+    {
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos/laptop/configuration.nix 
-          home-manager.nixosModules.home-manager {
+          ./nixos/laptop/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
             nixpkgs.overlays = overlays;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -43,12 +45,12 @@
         system = "x86_64-linux";
         homeDirectory = "/home/benjamin";
         username = "benjamin";
-        configuration = { pkgs, ...}: {
+        configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays;
           imports = [
             ./home/home.nix
           ];
         };
       };
-  };
+    };
 }
