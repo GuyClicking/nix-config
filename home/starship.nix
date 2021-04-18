@@ -4,4 +4,4 @@
   settings = {
     add_newline = false;
   };
-};
+}

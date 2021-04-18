@@ -1,12 +1,7 @@
 {
   enable = true;
 
-  script = "polybar bar &";
+  script = builtins.readFile ./polybar.sh;
 
-  settings = {
-    "module/bspwm" = {
-      type = "internal/bspwm";
-      # this isnt finished !
-    };
-  };
+  config = ./polybar.conf;
 }

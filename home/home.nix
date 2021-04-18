@@ -16,10 +16,10 @@
 
     neovim = import ./neovim { inherit pkgs; };
 
-    #polybar = import ./polybar.nix;
-
     zsh = import ./zsh.nix { inherit pkgs; };
 
     starship = import ./starship.nix;
   };
+  services.polybar = import ./polybar.nix;
+
 }
