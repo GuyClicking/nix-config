@@ -11,8 +11,6 @@ in
     path = ".cache/zsh/history";
   };
 
-  # use auto-complete
-
   # bind keys properly for backword or switch to vi mode??
 
   shellAliases = {
@@ -36,9 +34,9 @@ in
     TERMINAL = "alacritty";
   };
 
-  initExtra = ''
-    . ~/.nix-profile/etc/profile.d/nix.sh
-  '';
+#  initExtra = ''
+#    . ~/.nix-profile/etc/profile.d/nix.sh
+#  '';
 
   plugins = [
     {

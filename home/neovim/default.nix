@@ -16,10 +16,14 @@
       function lua()
         ${builtins.readFile ./lua.lua}
       end
+      function tex()
+        ${builtins.readFile ./tex.lua}
+      end
     EOF
     au BufEnter *.c lua c()
     au BufEnter *.cpp lua cpp()
     au BufEnter *.lua lua lua()
+    au BufEnter *.tex lua tex()
   '';
   plugins = with pkgs.vimPlugins; [
     { plugin = vim-nix; }

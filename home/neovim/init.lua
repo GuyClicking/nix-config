@@ -22,6 +22,9 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smarttab = true
 
+-- Use Australian spelling
+vim.bo.spelllang = 'en_au'
+
 -- Ruler shows the line and column number at the bottom right
 vim.o.ruler = true
 
@@ -48,8 +51,11 @@ vim.api.nvim_set_keymap('n', '<leader>a', '$i',
 -- Make leader+x delete char at the end of the line
 vim.api.nvim_set_keymap('n', '<leader>x', '$x',
                         { noremap = true, silent = true })
+-- Make leader+f fix the spelling of the current word
+vim.api.nvim_set_keymap('n', '<leader>f', '1z=',
+                        { noremap = true, silent = true })
  
--- Make Shift-Delete do nothing (my keyboard is weird)
+-- Make Shift-Delete do nothing (my keyboard is weird so I press it a lot)
 vim.api.nvim_set_keymap('i', '<S-Del>', '', { noremap = true, silent = true })
 
 -- Colour column shows the text width of a file
