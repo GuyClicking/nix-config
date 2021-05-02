@@ -34,9 +34,9 @@ in
     TERMINAL = "alacritty";
   };
 
-#  initExtra = ''
-#    . ~/.nix-profile/etc/profile.d/nix.sh
-#  '';
+  initExtra = ''
+    . ~/.nix-profile/etc/profile.d/nix.sh
+  '';
 
   plugins = [
     {
