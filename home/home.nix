@@ -5,12 +5,14 @@
 
   imports = [
     ./modules
+    ./themes/gruvbox
   ];
 
   alacritty.enable = true;
   neovim.enable = true;
   polybar.enable = true;
   starship.enable = true;
+  zathura.enable = true;
   xinit = {
     enable = true;
     config = ''
@@ -33,12 +35,4 @@
     pkgs.i3lock-color
     pkgs.tree-sitter
   ];
-
-#  gtk = {
-#    enable = true;
-#    theme = {
-#      package = pkgs.gruvbox-dark-gtk;
-#      name = "Gruvbox Dark";
-#    };
-#  };
 }

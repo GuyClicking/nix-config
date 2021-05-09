@@ -37,6 +37,15 @@
           }
         ];
       };
+
+      packages.x86_64-linux.customize =
+        with import nixpkgs { system = "x86_64-linux"; };
+        pkgs.callPackage ./customize.nix { };
+
+      defaultApp.x86_64-linux = {
+        type = "app";
+        program = "${self.packages.x86_64-linux.customize}/bin/customize";
+      };
       apps.x86_64-linux.home = {
         type = "app";
         program = "${self.home.activationPackage}/activate";
