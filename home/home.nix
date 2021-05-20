@@ -31,6 +31,7 @@
   home.packages = [
     # packages
     pkgs.ccls
+    pkgs.fzf
     pkgs.gcc
     pkgs.i3lock-color
     pkgs.tree-sitter

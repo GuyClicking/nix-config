@@ -49,6 +49,7 @@ with lib;
       '';
       plugins = [
         { plugin = pkgs.vimPlugins.vim-nix; }
+        { plugin = pkgs.vimPlugins.fzfWrapper; }
         { plugin = pkgs.vimPlugins.idris2-vim; }
         { plugin = config.neovim.colourSchemePackage; config = "colorscheme ${config.neovim.colourScheme}"; }
         { plugin = pkgs.vimPlugins.nvim-lspconfig; }

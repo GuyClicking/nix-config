@@ -54,6 +54,9 @@ vim.api.nvim_set_keymap('n', '<leader>x', '$x',
 -- Make leader+f fix the spelling of the current word
 vim.api.nvim_set_keymap('n', '<leader>f', '1z=',
                         { noremap = true, silent = true })
+-- Make leader+C open the colour scheme menu
+vim.api.nvim_set_keymap('n', '<leader>C', ':lua colourscheme()<CR>',
+                        { noremap = true, silent = true })
  
 -- Make Shift-Delete do nothing (my keyboard is weird so I press it a lot)
 vim.api.nvim_set_keymap('i', '<S-Del>', '', { noremap = true, silent = true })
@@ -61,6 +64,13 @@ vim.api.nvim_set_keymap('i', '<S-Del>', '', { noremap = true, silent = true })
 -- Colour column shows the text width of a file
 vim.wo.colorcolumn = vim.wo.colorcolumn .. '+' .. 1
 for i = 2,255 do vim.wo.colorcolumn = vim.wo.colorcolumn .. ',+' .. i end
+
+-- Funky commands
+
+-- Command that opens fzf for colour schemes
+function colourscheme()
+    vim.api.nvim_eval('fzf#run(fzf#wrap({"source":luaeval("{'..string.gsub(vim.api.nvim_eval("globpath(&rtp, 'colors/*.vim')") .. '\n','.-/colors/(.-).vim\n',"'%1',")..'}"),"sink":"colorscheme"}))')
+end
 
 -- LSP
 

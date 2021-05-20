@@ -47,9 +47,35 @@ in
         TERMINAL = "alacritty";
       };
 
-      #  initExtra = ''
-      #    . ~/.nix-profile/etc/profile.d/nix.sh
-      #  '';
+      initExtra = ''
+        #. ~/.nix-profile/etc/profile.d/nix.sh
+
+        # From the fzf wiki
+        fd() {
+          local dir
+          dir=$(find ''${1:-.} -path '*/\.*' -prune \
+                          -o -type d -print 2> /dev/null | fzf-tmux -r +m) &&
+          cd "$dir"
+        }
+
+        fh() {
+          eval $(history -n | fzf-tmux -r +m)
+        }
+
+        fmv() {
+          local dir
+          dir=$(find ''${2:-.} -path '*/\.*' -prune \
+                          -o -type d -print 2> /dev/null | fzf-tmux -r +m) &&
+          mv $1 "$dir"
+        }
+
+        fcp() {
+          local dir
+          dir=$(find ''${2:-.} -path '*/\.*' -prune \
+                          -o -type d -print 2> /dev/null | fzf-tmux -r +m) &&
+          cp $1 "$dir"
+        }
+      '';
 
       plugins = [
         {
