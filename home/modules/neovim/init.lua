@@ -66,6 +66,7 @@ vim.wo.colorcolumn = vim.wo.colorcolumn .. '+' .. 1
 for i = 2,255 do vim.wo.colorcolumn = vim.wo.colorcolumn .. ',+' .. i end
 
 -- Funky commands
+vim.api.nvim_command('command! W w')
 
 -- Command that opens fzf for colour schemes
 function colourscheme()
@@ -74,7 +75,71 @@ end
 
 -- LSP
 
-require('lspconfig').ccls.setup{}
+require'lspconfig'.ccls.setup{}
+require'lspconfig'.hls.setup{}
+require'lspconfig'.texlab.setup{}
 
 -- Always have the sign column so that code doesnt move around on error
 vim.wo.signcolumn = "yes"
+
+-- nvim-compe
+
+function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function check_back_space()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+_G.tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-n>"
+    elseif require'luasnip'.expand_or_jumpable() then
+        return t "<Plug>luasnip-expand-or-jump"
+    elseif check_back_space() then
+        return t "<Tab>"
+    else
+        return vim.fn['compe#complete']()
+    end
+end
+_G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-p>"
+    elseif require'luasnip'.expand_or_jumpable() then
+        return t "<Plug>luasnip-expand-or-jump"
+    else
+        return t "<S-Tab>"
+    end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- Vimwiki
+vim.g.vimwiki_list = {{
+    path = "~/.local/share/vimwiki/",
+    path_html = "~/.local/share/vimwiki-html/",
+    auto_toc = 1,
+    index = "main"
+}}
+
+vim.g.calendar_open = 0
+
+_G.open_calendar = function()
+    if vim.g.calendar_open == 1 then
+        vim.g.calendar_open = 0
+        return t "<Plug>CalendarVq"
+    end
+    vim.g.calendar_open = 1
+    return t "<Plug>CalendarV"
+end
+
+vim.api.nvim_set_keymap("n", "<leader>wc", "v:lua.open_calendar()", {expr = true})

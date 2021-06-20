@@ -15,13 +15,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    vim-plugins-overlay = {
+      url = github:vi-tality/vim-plugins-overlay;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim, vim-plugins-overlay, ... }@inputs:
     let
       overlays = [
         neovim.overlay
+        vim-plugins-overlay.overlay
       ];
+      libExtra = import ./lib;
     in
     {
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
@@ -38,9 +45,11 @@
         ];
       };
 
-      packages.x86_64-linux.customize =
-        with import nixpkgs { system = "x86_64-linux"; };
-        pkgs.callPackage ./customize.nix { };
+      packages.x86_64-linux = {
+        customize =
+          with import nixpkgs { system = "x86_64-linux"; };
+          pkgs.callPackage ./customize.nix { };
+        };
 
       defaultApp.x86_64-linux = {
         type = "app";

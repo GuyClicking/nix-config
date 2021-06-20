@@ -1,7 +1,15 @@
 { config, pkgs, lib, ... }:
 
+with builtins;
 with lib;
 
+let
+  luaConfig = file: ''
+    lua << EOF
+    ${readFile file}
+    EOF
+  '';
+in
 {
   options.neovim = {
     enable = mkEnableOption "Neovim";
@@ -26,20 +34,22 @@ with lib;
       enable = true;
       package = pkgs.neovim;
       extraConfig = ''
+        ${readFile ./syntax.vim}
+
         lua << EOF
-          ${builtins.readFile ./init.lua}
+          ${readFile ./init.lua}
 
           function c()
-            ${builtins.readFile ./c.lua}
+            ${readFile ./c.lua}
           end
           function cpp()
-            ${builtins.readFile ./cpp.lua}
+            ${readFile ./cpp.lua}
           end
           function lua()
-            ${builtins.readFile ./lua.lua}
+            ${readFile ./lua.lua}
           end
           function tex()
-            ${builtins.readFile ./tex.lua}
+            ${readFile ./tex.lua}
           end
         EOF
         au BufEnter *.c lua c()
@@ -51,9 +61,21 @@ with lib;
         { plugin = pkgs.vimPlugins.vim-nix; }
         { plugin = pkgs.vimPlugins.fzfWrapper; }
         { plugin = pkgs.vimPlugins.idris2-vim; }
+        { plugin = pkgs.vimPlugins.haskell-vim; }
+        { plugin = pkgs.vitalityVimPlugins.LuaSnip; }
         { plugin = config.neovim.colourSchemePackage; config = "colorscheme ${config.neovim.colourScheme}"; }
+        #{ plugin = pkgs.vimPlugins.nvim-compe; config = "lua require'compe'.setup{ enabled=true; autocomplete=true; source={ path=true; nvim_lsp=true; }; }"; }
+        { plugin = pkgs.vimPlugins.nvim-compe; config = luaConfig ./compe.lua; }
         { plugin = pkgs.vimPlugins.nvim-lspconfig; }
         { plugin = pkgs.vimPlugins.nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
+        { plugin = pkgs.vimPlugins.vimwiki; }
+        { plugin = pkgs.vimPlugins.vimtex; }
+        { plugin = pkgs.vimPlugins.fugitive; }
+        { plugin = pkgs.vimPlugins.vim-startify; }
+        { plugin = pkgs.vimPlugins.vim-dispatch; }
+        { plugin = pkgs.vimPlugins.vim-surround; }
+        { plugin = pkgs.vimPlugins.vim-polyglot; }
+        { plugin = pkgs.vimPlugins.mattn-calendar-vim; }
       ];
     };
   };

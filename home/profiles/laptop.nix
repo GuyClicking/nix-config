@@ -1,20 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
-with lib;
-let
-  libExtra = import ../lib { inherit lib; };
-  scripts = libExtra.mapOnDir ./scripts (name: a:
-    libExtra.createScriptFile name "${toString ./scripts}/${name}"
-  );
-in {
+{
   home.stateVersion = "20.09";
 
   imports = [
-    ./modules
-    ./themes/gruvbox
+    ../modules
+    ../themes/gruvbox
   ];
-
-  home.file = scripts;
 
   alacritty.enable = true;
   dunst.enable = true;

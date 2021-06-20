@@ -17,11 +17,12 @@ in
   };
 
   config = mkIf config.zsh.enable {
+    home.packages = [ pkgs.any-nix-shell ];
     programs.zsh = {
       enable = true;
 
       history = {
-        path = ".cache/zsh/history";
+        path = "/home/benjamin/.cache/zsh/history";
       };
 
       # bind keys properly for backword or switch to vi mode??
@@ -50,6 +51,8 @@ in
       initExtra = ''
         #. ~/.nix-profile/etc/profile.d/nix.sh
 
+        any-nix-shell zsh --info-right | source /dev/stdin
+
         # From the fzf wiki
         fd() {
           local dir
@@ -77,18 +80,18 @@ in
         }
       '';
 
-      plugins = [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.1.0";
-            sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
-          };
-        }
-      ];
+      #      plugins = [
+      #        {
+      #          name = "zsh-nix-shell";
+      #          file = "nix-shell.plugin.zsh";
+      #          src = pkgs.fetchFromGitHub {
+      #            owner = "chisui";
+      #            repo = "zsh-nix-shell";
+      #            rev = "v0.1.0";
+      #            sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
+      #          };
+      #        }
+      #      ];
     };
   };
 }

@@ -14,3 +14,14 @@ vim.api.nvim_set_keymap('n', '<leader>c', '$bci{',
 -- Bind <leader>+d to duplicate the current line down
 vim.api.nvim_set_keymap('n', '<leader>d', 'yyp',
                         { noremap = true, silent = true })
+
+--vim.api.nvim_eval("TexNewMathZone('E','align',1)")
+--vim.api.nvim_eval("TexNewMathZone('E','multline',1)")
+
+-- Vimtex stuff
+vim.g.vimtex_format_enabled = 1
+vim.g.vimtex_syntax_nospell_comments = 1
+
+-- Get rid of calendar bindings so that <leader>c is usable
+vim.api.nvim_del_keymap("n", "<leader>cal")
+vim.api.nvim_del_keymap("n", "<leader>caL")
