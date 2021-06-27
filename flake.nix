@@ -28,7 +28,19 @@
         neovim.overlay
         vim-plugins-overlay.overlay
       ];
-      libExtra = import ./lib;
+      lib = nixpkgs.lib;
+      libExtra = import ./lib { inherit lib; };
+      homeConfig = path: home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        homeDirectory = "/home/benjamin";
+        username = "benjamin";
+        configuration = { pkgs, ... }: {
+          nixpkgs.overlays = overlays;
+          imports = [
+            path
+          ];
+        };
+      };
     in
     {
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
@@ -55,20 +67,11 @@
         type = "app";
         program = "${self.packages.x86_64-linux.customize}/bin/customize";
       };
-      apps.x86_64-linux.home = {
+      apps.x86_64-linux = lib.mapAttrs (n: v: {
         type = "app";
-        program = "${self.home.activationPackage}/activate";
-      };
-      home = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        homeDirectory = "/home/benjamin";
-        username = "benjamin";
-        configuration = { pkgs, ... }: {
-          nixpkgs.overlays = overlays;
-          imports = [
-            ./home/home.nix
-          ];
-        };
-      };
+        program = "${self.home.${n}.activationPackage}/activate";
+      }) self.home;
+      #home = homeConfig ./home/home.nix;
+      home = libExtra.mapOnDir' ./home/profiles (name: a: lib.nameValuePair (lib.removeSuffix ".nix" name) (homeConfig "${toString ./home/profiles}/${name}"));
     };
 }

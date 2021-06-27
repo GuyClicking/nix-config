@@ -49,7 +49,7 @@ in
       };
 
       initExtra = ''
-        #. ~/.nix-profile/etc/profile.d/nix.sh
+        . ~/.nix-profile/etc/profile.d/nix.sh
 
         any-nix-shell zsh --info-right | source /dev/stdin
 

@@ -55,24 +55,25 @@ in
   config = mkIf config.alacritty.enable {
     programs.alacritty = {
       enable = true;
+      package = pkgs.hello;
 
       settings = {
         font = {
-          size = 9;
+          size = 10;
           normal = {
-            family = "Hack";
+            family = config.alacritty.font;
             style = "Regular";
           };
           bold = {
-            family = "Hack";
+            family = config.alacritty.font;
             style = "Bold";
           };
           italic = {
-            family = "Hack";
+            family = config.alacritty.font;
             style = "Italic";
           };
           bold_italic = {
-            family = "Hack";
+            family = config.alacritty.font;
             style = "Bold Italic";
           };
         };

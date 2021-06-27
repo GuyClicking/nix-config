@@ -12,6 +12,6 @@ with lib;
       pgfplots
       texlab
       texlive.combined.scheme-full
-    ]
+    ];
   };
 }

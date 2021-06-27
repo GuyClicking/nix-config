@@ -84,6 +84,8 @@ vim.wo.signcolumn = "yes"
 
 -- nvim-compe
 
+vim.g.vimtex_view_method = "zathura"
+
 function t(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
