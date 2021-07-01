@@ -13,4 +13,4 @@ let
       import path { inherit lib; }
     ));
 in
-foldAttrs (n: a: n) [] (attrValues files)
+foldAttrs (n: a: n) [ ] (attrValues files)

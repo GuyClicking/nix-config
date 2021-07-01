@@ -6,7 +6,8 @@ let
   scripts = libExtra.mapOnDir ./scripts (name: a:
     libExtra.createScriptFile name "${toString ./scripts}/${name}"
   );
-in {
+in
+{
   home.stateVersion = "20.09";
 
   imports = [

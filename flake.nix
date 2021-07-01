@@ -27,8 +27,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim,
-    vim-plugins-overlay, idris2-pkgs, ... }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , neovim
+    , vim-plugins-overlay
+    , idris2-pkgs
+    , ...
+    }@inputs:
     let
       overlays = [
         neovim.overlay
@@ -68,16 +75,18 @@
         customize =
           with import nixpkgs { system = "x86_64-linux"; };
           pkgs.callPackage ./customize.nix { };
-        };
+      };
 
       defaultApp.x86_64-linux = {
         type = "app";
         program = "${self.packages.x86_64-linux.customize}/bin/customize";
       };
-      apps.x86_64-linux = lib.mapAttrs (n: v: {
-        type = "app";
-        program = "${self.home.${n}.activationPackage}/activate";
-      }) self.home;
+      apps.x86_64-linux = lib.mapAttrs
+        (n: v: {
+          type = "app";
+          program = "${self.home.${n}.activationPackage}/activate";
+        })
+        self.home;
       #home = homeConfig ./home/home.nix;
       home = libExtra.mapOnDir' ./home/profiles (name: a: lib.nameValuePair (lib.removeSuffix ".nix" name) (homeConfig "${toString ./home/profiles}/${name}"));
     };
