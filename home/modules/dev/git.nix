@@ -21,8 +21,10 @@ with lib;
       userName = "Benjamin Paul";
 
       extraConfig = {
-        askPass = "";
-        core.autocrlf = "input";
+        core = {
+          askPass = "";
+          autocrlf = "input";
+        };
         github.user = "GuyClicking";
         help.autocorrect = 1;
         init.defaultBranch = "main";
