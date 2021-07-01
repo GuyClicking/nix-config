@@ -84,4 +84,17 @@ in
     date-underline = yellow1;
     battery-underline = yellow1;
   };
+
+  neovim = {
+    colourSchemePackage = pkgs.vimUtils.buildVimPlugin {
+      name = "tokyodark.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "tiagovla";
+        repo = "tokyodark.nvim";
+        rev = "4714677bb341fc4aa421a3e3b614422700ac84b6";
+        sha256 = "wOjgXsdHFCqgdOfPDJ+8QHk8wsl8up5AyarGf5tvQ2c=";
+      };
+    };
+    colourScheme = "tokyodark";
+  };
 }
