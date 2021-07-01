@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+
+with lib;
 
 let
+  extraLib = import ../../../lib { inherit lib; };
+
   red1 = "#cc241d";
   red2 = "#fb4934";
 
@@ -25,6 +29,8 @@ let
   orange1 = "#d65d0e";
   orange2 = "#fe8019";
 
+  black = "#06080A";
+
   bg0 = "#11121d";
   bg1 = "#1a1b2a";
   bg2 = "#212234";
@@ -40,10 +46,10 @@ in
   imports = [ ../../modules ];
 
   alacritty.colours = {
-    bg = bg0_h;
-    fg = fg0;
+    bg = bg0;
+    fg = fg;
 
-    black = bg0_h;
+    black = black;
     black-bright = grey2;
 
     red = red1;
@@ -65,14 +71,14 @@ in
     cyan-bright = cyan2;
 
     white = grey1;
-    white-bright = fg1;
+    white-bright = fg;
   };
 
   polybar.colours = {
-    background = bg0_h;
+    background = bg0;
     background-alt = bg2;
-    foreground = fg0;
-    foreground-alt = fg4; # bg4?
+    foreground = fg;
+    foreground-alt = bg4; # bg4?
     alert = red2;
     wm-underline = yellow1;
     date-underline = yellow1;

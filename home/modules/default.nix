@@ -3,8 +3,6 @@
 with lib;
 
 let
-  libExtra = import ../../lib { inherit lib; };
-
   importModulesRecursively = dir:
     let d = builtins.readDir dir; in
     if hasAttrByPath [ "default.nix" ] d then [ "" ] else
