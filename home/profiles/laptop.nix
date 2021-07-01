@@ -18,6 +18,7 @@ in {
 
   alacritty.enable = true;
   dunst.enable = true;
+  git.enable = true;
   idris2.enable = true;
   neovim.enable = true;
   polybar.enable = true;
@@ -28,7 +29,9 @@ in {
     enable = true;
     config = ''
       [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME .Xresources
+
       . ~/.xprofile
+
       exec bspwm
     '';
   };
@@ -45,7 +48,6 @@ in {
     pkgs.gcc
     pkgs.i3lock-color
     pkgs.manpages
-    pkgs.rlwrap
     pkgs.texlab
     pkgs.tree-sitter
   ];

@@ -22,7 +22,10 @@ with lib;
 
       extraConfig = {
         askPass = "";
+        core.autocrlf = "input";
         github.user = "GuyClicking";
+        help.autocorrect = 1;
+        init.defaultBranch = "main";
       };
     };
   };

@@ -21,6 +21,8 @@ in {
     font = "Hack Nerd Font";
   };
   dunst.enable = true;
+  git.enable = true;
+  haskell.enable = true;
   neovim.enable = true;
   polybar.enable = true;
   starship.enable = true;
@@ -47,7 +49,6 @@ in {
     pkgs.ccls
     pkgs.fzf
     pkgs.gcc
-    pkgs.haskell-language-server
     pkgs.i3lock-color
     pkgs.manpages
     pkgs.texlab
