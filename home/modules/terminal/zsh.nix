@@ -31,6 +31,11 @@ in
         ls = "ls --color=auto";
         l = "ls";
         la = "ls -la";
+        ga = "git add";
+        gc = "git commit";
+        gd = "git diff";
+        gp = "git push";
+        gs = "git status";
         grep = "grep --color=auto";
         v = config.zsh.editor;
         tmux = "tmux -2";

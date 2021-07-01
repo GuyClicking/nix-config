@@ -10,13 +10,6 @@ with lib;
   config = mkIf config.git.enable {
     programs.git = {
       enable = true;
-      aliases = {
-        ga = "add";
-        gc = "commit";
-        gd = "diff";
-        gp = "push";
-        gs = "status";
-      };
       userEmail = "bpaul@bpaul.xyz";
       userName = "Benjamin Paul";
 
