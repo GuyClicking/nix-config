@@ -50,6 +50,7 @@ in {
     pkgs.haskell-language-server
     pkgs.i3lock-color
     pkgs.manpages
+    pkgs.sxiv
     pkgs.texlab
     pkgs.tree-sitter
   ];

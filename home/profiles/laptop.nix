@@ -2,22 +2,23 @@
 
 with lib;
 let
-  libExtra = import ../lib { inherit lib; };
-  scripts = libExtra.mapOnDir ./scripts (name: a:
-    libExtra.createScriptFile name "${toString ./scripts}/${name}"
+  libExtra = import ../../lib { inherit lib; };
+  scripts = libExtra.mapOnDirRec ../scripts (name: a:
+    libExtra.createScriptFile name "${toString ../scripts}/${name}"
   );
 in {
   home.stateVersion = "20.09";
 
   imports = [
-    ./modules
-    ./themes/gruvbox
+    ../modules
+    ../themes/gruvbox
   ];
 
   home.file = scripts;
 
   alacritty.enable = true;
   dunst.enable = true;
+  idris2.enable = true;
   neovim.enable = true;
   polybar.enable = true;
   starship.enable = true;
@@ -42,9 +43,9 @@ in {
     pkgs.ccls
     pkgs.fzf
     pkgs.gcc
-    pkgs.haskell-language-server
     pkgs.i3lock-color
     pkgs.manpages
+    pkgs.rlwrap
     pkgs.texlab
     pkgs.tree-sitter
   ];

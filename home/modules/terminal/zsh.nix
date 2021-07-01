@@ -33,13 +33,9 @@ in
         la = "ls -la";
         grep = "grep --color=auto";
         v = config.zsh.editor;
-        ga = "git add";
-        gc = "git commit";
-        gd = "git diff";
-        gp = "git push";
-        gs = "git status";
         tmux = "tmux -2";
         die = "shutdown now";
+        idris2 = "rlwrap idris2";
       };
 
       sessionVariables = {
@@ -49,7 +45,7 @@ in
       };
 
       initExtra = ''
-        . ~/.nix-profile/etc/profile.d/nix.sh
+        #. ~/.nix-profile/etc/profile.d/nix.sh
 
         any-nix-shell zsh --info-right | source /dev/stdin
 

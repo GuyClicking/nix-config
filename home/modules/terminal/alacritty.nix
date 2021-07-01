@@ -55,11 +55,10 @@ in
   config = mkIf config.alacritty.enable {
     programs.alacritty = {
       enable = true;
-      package = pkgs.hello;
 
       settings = {
         font = {
-          size = 10;
+          size = 9;
           normal = {
             family = config.alacritty.font;
             style = "Regular";

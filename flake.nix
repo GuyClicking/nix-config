@@ -17,16 +17,23 @@
     };
 
     vim-plugins-overlay = {
-      url = github:vi-tality/vim-plugins-overlay;
+      url = "github:vi-tality/vim-plugins-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    idris2-pkgs = {
+      url = "github:claymager/idris2-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim, vim-plugins-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim,
+    vim-plugins-overlay, idris2-pkgs, ... }@inputs:
     let
       overlays = [
         neovim.overlay
         vim-plugins-overlay.overlay
+        #idris2-pkgs.overlay
       ];
       lib = nixpkgs.lib;
       libExtra = import ./lib { inherit lib; };
@@ -52,7 +59,7 @@
             nixpkgs.overlays = overlays;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.benjamin = import ./home/home.nix;
+            home-manager.users.benjamin = import ./home/profiles/laptop.nix;
           }
         ];
       };

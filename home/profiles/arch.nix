@@ -3,7 +3,7 @@
 with lib;
 let
   libExtra = import ../../lib { inherit lib; };
-  scripts = libExtra.mapOnDir ../scripts (name: a:
+  scripts = libExtra.mapOnDirRec ../scripts (name: a:
     libExtra.createScriptFile name "${toString ../scripts}/${name}"
   );
 in {
