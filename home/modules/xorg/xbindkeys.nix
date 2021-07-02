@@ -20,7 +20,7 @@ with lib;
         m:0x41 + c:46
 
       # super + ;
-      "dmenu_run"
+      "rofi -show run"
         m:0x40 + c:47
 
       # super + shift + alt + q

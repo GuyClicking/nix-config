@@ -86,6 +86,8 @@ in
     battery-underline = yellow1;
   };
 
+  rofi.theme = "gruvbox-dark-hard";
+
   zathura.colours = {
     bg = bg0_h;
     bg2 = bg2;

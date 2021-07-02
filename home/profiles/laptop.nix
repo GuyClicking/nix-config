@@ -23,6 +23,7 @@ in
   idris2.enable = true;
   neovim.enable = true;
   polybar.enable = true;
+  rofi.enable = true;
   starship.enable = true;
   zathura.enable = true;
   xbindkeys.enable = true;
