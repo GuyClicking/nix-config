@@ -4,7 +4,7 @@ with lib;
 
 {
   options.dunst = {
-    enable = mkEnableOption "dunst";
+    enable = mkEnableOption "Dunst";
 
     geometry = {
       width = mkOption {
@@ -49,7 +49,7 @@ with lib;
         global = {
           follow = "keyboard";
 
-          geometry = (g: "${g.width}x${g.height}-${g.x}+${g.y}") config.dunst.geometry;
+          geometry = (g: "${toString g.width}x${toString g.height}-${toString g.x}+${toString g.y}") config.dunst.geometry;
           #corner_radius = 0;
           #transparency = 0;
 
