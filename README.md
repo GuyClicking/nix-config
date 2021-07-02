@@ -7,6 +7,8 @@ My desktop runs Arch linux and uses only home-manager. Most of the configuration
 This configuration is managed using flakes. They are very cool.
 
 ## Current programs used:
+|                      |           |
+| -                    | -         |
 | Window Manager       | bspwm     |
 | Hotkey daemon        | xbindkeys |
 | Status bar           | polybar   |
