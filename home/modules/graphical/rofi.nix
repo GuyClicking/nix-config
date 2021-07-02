@@ -65,21 +65,21 @@ with lib;
     };
 
     width = mkOption {
-      types = types.nullOr types.int;
+      type = types.nullOr types.int;
       default = null;
       example = 100;
       description = "Width of the window";
     };
 
     xoffset = mkOption {
-      types = types.int;
+      type = types.int;
       default = 0;
       example = 50;
       description = "Translate the window by this many pixels along the x axis";
     };
 
     yoffset = mkOption {
-      types = types.int;
+      type = types.int;
       default = 0;
       example = 50;
       description = "Translate the window by this many pixels along the y axis";
@@ -116,13 +116,13 @@ with lib;
       borderWidth = config.rofi.borderWidth;
 
       font = config.rofi.font;
-      padding = config.rofi.padding;
-      scrollbar = config.rofi.scrollbar;
-      separator = config.rofi.separator;
-      location = config.rofi.location;
-      width = config.rofi.width;
-      xoffset = config.rofi.xoffset;
-      yoffset = config.rofi.yoffset;
+      #padding = config.rofi.padding;
+      #scrollbar = config.rofi.scrollbar;
+      #separator = config.rofi.separator;
+      #location = config.rofi.location;
+      #width = config.rofi.width;
+      #xoffset = config.rofi.xoffset;
+      #yoffset = config.rofi.yoffset;
 
       lines = config.rofi.lines;
       rowHeight = config.rofi.rowHeight;
