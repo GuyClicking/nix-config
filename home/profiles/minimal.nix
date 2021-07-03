@@ -27,6 +27,5 @@ in
   home.packages = with pkgs; [
     bc
     fzf
-    gcc
   ];
 }

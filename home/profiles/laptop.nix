@@ -13,7 +13,9 @@ in
   ];
 
   alacritty.enable = true;
+  c.enable = true;
   dunst.enable = true;
+  haskell.enable = true;
   idris2.enable = true;
   polybar.enable = true;
   rofi.enable = true;
@@ -32,7 +34,6 @@ in
 
   home.packages = with pkgs; [
     # packages
-    ccls
     i3lock-color
     manpages
     tree-sitter

@@ -18,6 +18,7 @@ in
     enable = true;
     font = "Hack Nerd Font";
   };
+  c.enable = true;
   dunst.enable = true;
   haskell.enable = true;
   latex.enable = true;
@@ -37,7 +38,6 @@ in
 
   home.packages = [
     # packages
-    pkgs.ccls
     pkgs.i3lock-color
     pkgs.manpages
     pkgs.tree-sitter
