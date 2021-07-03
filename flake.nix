@@ -25,6 +25,11 @@
       url = "github:claymager/idris2-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,6 +39,7 @@
     , neovim
     , vim-plugins-overlay
     , idris2-pkgs
+    , emacs-overlay
     , ...
     }@inputs:
     let
@@ -41,6 +47,7 @@
         neovim.overlay
         vim-plugins-overlay.overlay
         #idris2-pkgs.overlay
+        emacs-overlay.overlay
       ];
       lib = nixpkgs.lib;
       libExtra = import ./lib { inherit lib; };
