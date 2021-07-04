@@ -21,11 +21,25 @@ in
     programs.zsh = {
       enable = true;
 
+      defaultKeymap = "viins";
+
+      dotDir = ".config/zsh";
+
+      # Fix slow startup time on laptop
+      # https://gist.github.com/ctechols/ca1035271ad134841284
+      completionInit = ''
+      autoload -Uz compinit
+
+      for dump in ''${ZDOTDIR}/.zcompdump(N.mh+24); do
+        compinit
+      done
+
+      compinit -C;
+      '';
+
       history = {
         path = "/home/benjamin/.cache/zsh/history";
       };
-
-      # bind keys properly for backword or switch to vi mode??
 
       shellAliases = {
         ls = "ls --color=auto";
