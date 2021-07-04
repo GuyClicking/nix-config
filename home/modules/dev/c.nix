@@ -11,6 +11,8 @@ with lib;
     # Other modules depend on whether this is enabled or not
     home.packages = with pkgs; [
       ccls
+      clang-tools
+      clang-manpages
       gcc
     ];
   };
