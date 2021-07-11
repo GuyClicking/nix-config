@@ -14,6 +14,13 @@ in
       example = "nano";
       description = "The default editor, which is what \$EDITOR will be set to";
     };
+
+    aliases = mkOption {
+      type = types.attrsOf types.string;
+      default = {};
+      example = { a = "echo hello" };
+      description = "Attrset of aliases";
+    };
   };
 
   config = mkIf config.zsh.enable {
@@ -64,9 +71,11 @@ in
       };
 
       initExtra = ''
-        #. ~/.nix-profile/etc/profile.d/nix.sh
+        . ~/.nix-profile/etc/profile.d/nix.sh
 
-        any-nix-shell zsh --info-right | source /dev/stdin
+        #any-nix-shell zsh --info-right | source /dev/stdin
+
+        PATH=$PATH:$HOME/.local/scripts:$HOME/.local/bin
 
         # From the fzf wiki
         fd() {

@@ -17,6 +17,9 @@ with lib;
         core = {
           askPass = "";
           autocrlf = "input";
+          excludesfile = ''
+              .ccls-cache
+            '';
         };
         github.user = "GuyClicking";
         help.autocorrect = 1;

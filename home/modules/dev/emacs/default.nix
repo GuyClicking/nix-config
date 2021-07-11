@@ -11,10 +11,6 @@ with lib;
     programs.emacs = {
       enable = true;
       package = pkgs.emacsPgtkGcc;
-
-      extraPackages = epkgs: [
-        epkgs.gruvbox-theme
-      ];
     };
 
     services.emacs.enable = true;

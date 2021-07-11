@@ -58,7 +58,7 @@ in
 
       settings = {
         font = {
-          size = 9;
+          size = 10;
           normal = {
             family = config.alacritty.font;
             style = "Regular";

@@ -12,14 +12,14 @@ in
     ../themes/gruvbox
   ];
 
-  home.file = scripts;
-
   alacritty = {
     enable = true;
     font = "Hack Nerd Font";
   };
+  programs.alacritty.package = pkgs.hello;
   c.enable = true;
   dunst.enable = true;
+  emacs.enable = true;
   haskell.enable = true;
   latex.enable = true;
   polybar.enable = true;
@@ -34,6 +34,9 @@ in
 
       exec bspwm
     '';
+  };
+  zsh.aliases = {
+    nrh = "nix run .#arch"; # nrh is nix run homemanager
   };
 
   home.packages = [
