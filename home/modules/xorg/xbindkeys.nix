@@ -37,17 +37,17 @@ with lib;
       "bspc node -k"
         m:0x41 + c:54
 
-      "lock"
-        m:0x40 + c:53
+#      "lock"
+#        m:0x40 + c:53
 
-      "browser"
-        m:0x40 + c:56
+#      "browser"
+#        m:0x40 + c:56
 
-      "scratchpad"
-        m:0x40 + c:31
+#      "scratchpad"
+#        m:0x40 + c:31
 
-      "calculate"
-        m:0x44 + c:54
+#      "calculate"
+#        m:0x44 + c:54
 
       "amixer set Master 5%+"
           XF86AudioRaiseVolume
