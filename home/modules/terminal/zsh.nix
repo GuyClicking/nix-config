@@ -18,7 +18,7 @@ in
     aliases = mkOption {
       type = types.attrsOf types.string;
       default = {};
-      example = { a = "echo hello" };
+      example = { a = "echo hello"; };
       description = "Attrset of aliases";
     };
   };
@@ -71,9 +71,9 @@ in
       };
 
       initExtra = ''
-        . ~/.nix-profile/etc/profile.d/nix.sh
+        #. ~/.nix-profile/etc/profile.d/nix.sh
 
-        #any-nix-shell zsh --info-right | source /dev/stdin
+        any-nix-shell zsh --info-right | source /dev/stdin
 
         PATH=$PATH:$HOME/.local/scripts:$HOME/.local/bin
 
