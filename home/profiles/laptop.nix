@@ -18,9 +18,9 @@ in
   emacs.enable = true;
   haskell.enable = true;
   idris2.enable = true;
+  latex.enable = true;
   polybar.enable = true;
   rofi.enable = true;
-  zathura.enable = true;
   xbindkeys.enable = true;
   xinit = {
     enable = true;
@@ -32,6 +32,7 @@ in
       exec bspwm
     '';
   };
+  zathura.enable = true;
 
   home.packages = with pkgs; [
     # packages
