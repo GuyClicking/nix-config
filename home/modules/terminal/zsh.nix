@@ -18,7 +18,7 @@ in
     aliases = mkOption {
       type = types.attrsOf types.string;
       default = {};
-      example = { a = "echo hello" };
+      example = { a = "echo hello"; };
       description = "Attrset of aliases";
     };
   };
