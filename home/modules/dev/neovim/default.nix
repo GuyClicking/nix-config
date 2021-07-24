@@ -39,6 +39,9 @@ in
         lua << EOF
           ${readFile ./init.lua}
 
+          function asm()
+            vim.bo.ft = 'nasm'
+          end
           function c()
             ${readFile ./c.lua}
           end
@@ -52,27 +55,28 @@ in
             ${readFile ./tex.lua}
           end
         EOF
+        au BufEnter *.asm lua asm()
         au BufEnter *.c lua c()
         au BufEnter *.cpp lua cpp()
         au BufEnter *.lua lua lua()
         au BufEnter *.tex lua tex()
       '';
       plugins = [
-        { plugin = pkgs.vimPlugins.vim-nix; }
-        { plugin = pkgs.vimPlugins.fzfWrapper; }
-        { plugin = pkgs.vimPlugins.plenary-nvim; }
-        { plugin = pkgs.vitalityVimPlugins.LuaSnip; }
         { plugin = config.neovim.colourSchemePackage; config = "colorscheme ${config.neovim.colourScheme}"; }
+        { plugin = pkgs.vimPlugins.fugitive; }
+        { plugin = pkgs.vimPlugins.fzfWrapper; }
+        { plugin = pkgs.vimPlugins.mattn-calendar-vim; }
         { plugin = pkgs.vimPlugins.nvim-compe; config = luaConfig ./compe.lua; }
         { plugin = pkgs.vimPlugins.nvim-lspconfig; }
         { plugin = pkgs.vimPlugins.nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
-        { plugin = pkgs.vimPlugins.vimwiki; }
-        { plugin = pkgs.vimPlugins.fugitive; }
-        { plugin = pkgs.vimPlugins.vim-startify; }
+        { plugin = pkgs.vimPlugins.plenary-nvim; }
         { plugin = pkgs.vimPlugins.vim-dispatch; }
-        { plugin = pkgs.vimPlugins.vim-surround; }
+        { plugin = pkgs.vimPlugins.vim-nix; }
         { plugin = pkgs.vimPlugins.vim-polyglot; }
-        { plugin = pkgs.vimPlugins.mattn-calendar-vim; }
+        { plugin = pkgs.vimPlugins.vim-startify; }
+        { plugin = pkgs.vimPlugins.vim-surround; }
+        { plugin = pkgs.vimPlugins.vimwiki; }
+        { plugin = pkgs.vitalityVimPlugins.LuaSnip; }
 
         # Language specific plugins
         (mkIf config.haskell.enable { plugin = pkgs.vimPlugins.haskell-vim; })
