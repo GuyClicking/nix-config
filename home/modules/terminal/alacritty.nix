@@ -22,6 +22,14 @@ in
       description = "Font used";
     };
 
+    fontSize = mkOption {
+      # Since it can be like 9.5 or something string
+      type = types.str;
+      default = "9";
+      example = "9.5";
+      description = "Font size as a string";
+    };
+
     colours = {
       bg = mkColourOption "bg" "#1d1f21";
       fg = mkColourOption "fg" "#c5c8c6";
@@ -58,7 +66,7 @@ in
 
       settings = {
         font = {
-          size = 9;
+          size = config.alacritty.fontSize;
           normal = {
             family = config.alacritty.font;
             style = "Regular";

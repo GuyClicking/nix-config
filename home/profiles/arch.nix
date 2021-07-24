@@ -15,6 +15,7 @@ in
   alacritty = {
     enable = true;
     font = "Hack Nerd Font";
+    fontSize = "10";
   };
   programs.alacritty.package = pkgs.hello;
   c.enable = true;
