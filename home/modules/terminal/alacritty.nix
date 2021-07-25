@@ -23,11 +23,10 @@ in
     };
 
     fontSize = mkOption {
-      # Since it can be like 9.5 or something string
-      type = types.str;
-      default = "9";
-      example = "9.5";
-      description = "Font size as a string";
+      type = types.int;
+      default = 9;
+      example = 10;
+      description = "Font size";
     };
 
     colours = {
