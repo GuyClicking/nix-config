@@ -69,6 +69,8 @@ in
         { plugin = pkgs.vimPlugins.nvim-compe; config = luaConfig ./compe.lua; }
         { plugin = pkgs.vimPlugins.nvim-lspconfig; }
         { plugin = pkgs.vimPlugins.nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
+        { plugin = pkgs.vimPlugins.telescope-nvim; }
+        { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
         { plugin = pkgs.vimPlugins.plenary-nvim; }
         { plugin = pkgs.vimPlugins.vim-dispatch; }
         { plugin = pkgs.vimPlugins.vim-nix; }
