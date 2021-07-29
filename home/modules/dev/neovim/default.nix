@@ -61,29 +61,29 @@ in
         au BufEnter *.lua lua lua()
         au BufEnter *.tex lua tex()
       '';
-      plugins = [
+      plugins = with pkgs.vimPlugins; with pkgs.vitalityVimPlugins; [
         { plugin = config.neovim.colourSchemePackage; config = "colorscheme ${config.neovim.colourScheme}"; }
-        { plugin = pkgs.vimPlugins.fugitive; }
-        { plugin = pkgs.vimPlugins.fzfWrapper; }
-        { plugin = pkgs.vimPlugins.mattn-calendar-vim; }
-        { plugin = pkgs.vimPlugins.nvim-compe; config = luaConfig ./compe.lua; }
-        { plugin = pkgs.vimPlugins.nvim-lspconfig; }
-        { plugin = pkgs.vimPlugins.nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
-        { plugin = pkgs.vimPlugins.telescope-nvim; }
-        { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
-        { plugin = pkgs.vimPlugins.plenary-nvim; }
-        { plugin = pkgs.vimPlugins.vim-dispatch; }
-        { plugin = pkgs.vimPlugins.vim-nix; }
-        { plugin = pkgs.vimPlugins.vim-polyglot; }
-        { plugin = pkgs.vimPlugins.vim-startify; }
-        { plugin = pkgs.vimPlugins.vim-surround; }
-        { plugin = pkgs.vimPlugins.vimwiki; }
-        { plugin = pkgs.vitalityVimPlugins.LuaSnip; }
+        { plugin = fugitive; }
+        { plugin = fzfWrapper; }
+        { plugin = LuaSnip; }
+        { plugin = mattn-calendar-vim; }
+        { plugin = nvim-compe; config = luaConfig ./compe.lua; }
+        { plugin = nvim-lspconfig; }
+        { plugin = nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
+        { plugin = telescope-nvim; }
+        { plugin = telescope-symbols-nvim; }
+        { plugin = plenary-nvim; }
+        { plugin = vim-dispatch; }
+        { plugin = vim-nix; }
+        { plugin = vim-polyglot; }
+        { plugin = vim-startify; }
+        { plugin = vim-surround; }
+        { plugin = vimwiki; }
 
         # Language specific plugins
-        (mkIf config.haskell.enable { plugin = pkgs.vimPlugins.haskell-vim; })
-        (mkIf config.idris2.enable { plugin = pkgs.vimPlugins.idris2-vim; })
-        (mkIf config.latex.enable { plugin = pkgs.vimPlugins.vimtex; })
+        (mkIf config.haskell.enable { plugin = haskell-vim; })
+        (mkIf config.idris2.enable { plugin = idris2-vim; })
+        (mkIf config.latex.enable { plugin = vimtex; })
       ];
     };
   };
