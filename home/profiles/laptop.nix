@@ -15,7 +15,7 @@ in
   alacritty.enable = true;
   c.enable = true;
   dunst.enable = true;
-  emacs.enable = true;
+  #emacs.enable = true;
   haskell.enable = true;
   idris2.enable = true;
   latex.enable = true;
