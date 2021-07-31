@@ -69,10 +69,15 @@ in
         { plugin = mattn-calendar-vim; }
         { plugin = nvim-compe; config = luaConfig ./compe.lua; }
         { plugin = nvim-lspconfig; }
-        { plugin = nvim-treesitter; config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
-        { plugin = telescope-nvim; }
+        { plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars); config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
+        { plugin = telescope-nvim; config = luaConfig ./telescope.lua; }
+        { plugin = telescope-bibtex-nvim; }
+        { plugin = telescope-cheat-nvim; }
+        { plugin = telescope-frecency-nvim; }
         { plugin = telescope-symbols-nvim; }
+        { plugin = telescope-fzy-native-nvim; }
         { plugin = plenary-nvim; }
+        { plugin = popup-nvim; }
         { plugin = vim-dispatch; }
         { plugin = vim-nix; }
         { plugin = vim-polyglot; }

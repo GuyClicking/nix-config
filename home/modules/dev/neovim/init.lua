@@ -57,7 +57,7 @@ vim.api.nvim_set_keymap('n', '<leader>x', '$x',
 vim.api.nvim_set_keymap('n', '<leader>f', '1z=',
                         { noremap = true, silent = true })
 -- Make leader+C open the colour scheme menu
-vim.api.nvim_set_keymap('n', '<leader>C', ':lua colourscheme()<CR>',
+vim.api.nvim_set_keymap('n', '<leader>C', ':Telescope colorscheme<CR>',
                         { noremap = true, silent = true })
  
 -- Make Shift-Delete do nothing (my keyboard is weird so I press it a lot)
@@ -71,6 +71,7 @@ for i = 2,255 do vim.wo.colorcolumn = vim.wo.colorcolumn .. ',+' .. i end
 vim.api.nvim_command('command! W w')
 
 -- Command that opens fzf for colour schemes
+-- This is obsolete because I use telescope now
 function colourscheme()
     vim.api.nvim_eval('fzf#run(fzf#wrap({"source":luaeval("{'..string.gsub(vim.api.nvim_eval("globpath(&rtp, 'colors/*.vim')") .. '\n','.-/colors/(.-).vim\n',"'%1',")..'}"),"sink":"colorscheme"}))')
 end
