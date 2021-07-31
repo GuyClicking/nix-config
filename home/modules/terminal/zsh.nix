@@ -49,19 +49,20 @@ in
       };
 
       shellAliases = {
-        ls = "ls --color=auto";
-        l = "ls";
-        la = "ls -la";
+        die = "shutdown now";
         ga = "git add";
         gc = "git commit";
         gd = "git diff";
         gp = "git push";
-        gs = "git status";
         grep = "grep --color=auto";
-        v = config.zsh.editor;
-        tmux = "tmux -2";
-        die = "shutdown now";
+        gs = "git status";
         idris2 = "rlwrap idris2";
+        l = "ls";
+        la = "ls -la";
+        ls = "ls --color=auto";
+        ssh = "TERM=xterm-256color ssh";
+        tmux = "tmux -2";
+        v = config.zsh.editor;
       };
 
       sessionVariables = {
