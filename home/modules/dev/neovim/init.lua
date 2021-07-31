@@ -59,6 +59,9 @@ vim.api.nvim_set_keymap('n', '<leader>f', '1z=',
 -- Make leader+C open the colour scheme menu
 vim.api.nvim_set_keymap('n', '<leader>C', ':Telescope colorscheme<CR>',
                         { noremap = true, silent = true })
+-- Make leader+F fuzzyfind files
+vim.api.nvim_set_keymap('n', '<leader>F', ':Telescope find_files<CR>',
+                        { noremap = true, silent = true })
  
 -- Make Shift-Delete do nothing (my keyboard is weird so I press it a lot)
 vim.api.nvim_set_keymap('i', '<S-Del>', '', { noremap = true, silent = true })
