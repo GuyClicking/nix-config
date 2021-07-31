@@ -69,7 +69,7 @@ in
         { plugin = mattn-calendar-vim; }
         { plugin = nvim-compe; config = luaConfig ./compe.lua; }
         { plugin = nvim-lspconfig; }
-        { plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars); config = "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}"; }
+        { plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars); config = luaConfig ./treesitter.lua; }
         { plugin = telescope-nvim; config = luaConfig ./telescope.lua; }
         { plugin = telescope-bibtex-nvim; }
         { plugin = telescope-cheat-nvim; }
